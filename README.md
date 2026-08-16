@@ -5,8 +5,8 @@ timing on consumer devices whose clocks lie: the audible clock, calibration with
 calibration step, drift tracking, an anti-spoof gate that calibration cannot blind, and a
 score anyone can verify.
 
-📄 **Read it:** [WHITEPAPER.md](WHITEPAPER.md) · canonical version at
-[onedrum.io/whitepaper](https://onedrum.io/whitepaper)
+📄 **Read it:** [WHITEPAPER.md](WHITEPAPER.md) · [日本語版 WHITEPAPER.ja.md](WHITEPAPER.ja.md) ·
+canonical versions at [onedrum.io/whitepaper](https://onedrum.io/whitepaper) / [onedrum.io/whitepaper-ja](https://onedrum.io/whitepaper-ja)
 
 🥁 **Try the engine:** [onedrum.io](https://onedrum.io) — Viking Row, the first experience
 built on it. First beat in ~3 seconds, no install.
