@@ -1,0 +1,31 @@
+cff-version: 1.2.0
+message: "If you reference this white paper, please cite it as below."
+title: "OneDrum: Server-Certified Rhythm Performance Scoring"
+abstract: >-
+  How OneDrum certifies human timing on consumer devices whose clocks lie:
+  an audible clock carried by the media itself, calibration with no
+  calibration step, in-play drift re-centring, an anti-spoof gate computed on
+  calibration-invariant residuals, and an HMAC-signed score that any third
+  party can verify. Every mechanism described is running in production and is
+  backed by field data from 1,234 genuine attempts across desktop, iPhone,
+  and Android.
+type: report
+authors:
+  - family-names: Kovac
+    given-names: Nick
+    affiliation: "TargetCast, Inc."
+    city: Tokyo
+    country: JP
+version: "1.0"
+date-released: "2026-08-16"
+url: "https://onedrum.io/whitepaper"
+repository: "https://github.com/tci-nebula/onedrum-whitepaper"
+license-url: "https://github.com/tci-nebula/onedrum-whitepaper/blob/main/LICENSE"
+keywords:
+  - rhythm
+  - timing
+  - latency
+  - calibration
+  - anti-spoof
+  - web-audio
+  - synchronization
