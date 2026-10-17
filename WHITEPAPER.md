@@ -1,11 +1,13 @@
 # Server-Certified Rhythm Performance Scoring
 
-**OneDrum white paper · v1.0 · August 2026 · [canonical version](https://onedrum.io/whitepaper)**
+**OneDrum white paper · v1.0.1 · August 2026, revised 17 Oct 2026 · [canonical version](https://onedrum.io/whitepaper)**
 
 How OneDrum certifies human timing on consumer devices whose clocks lie — the audible
-clock, calibration with no calibration step, drift tracking, an anti-spoof gate that
-calibration cannot blind, and a score anyone can verify. Every claim here is running in
-production at [onedrum.io](https://onedrum.io) and backed by the field data shown.
+clock, calibration with no calibration step, a judgment window tuned from measured clock
+drift, an anti-spoof gate that calibration cannot blind, and a score anyone can verify.
+Every claim here is running in production at [onedrum.io](https://onedrum.io) and backed
+by the field data shown, except the one mechanism still in design — §5's drift
+re-centring — which is labelled as exactly that.
 
 ## 1. The problem
 
@@ -82,12 +84,16 @@ offset.
 ## 5. Drift: calibration that stays calibrated
 
 Production data (§7) showed that on at least one major platform the reported audio latency
-*drifts during a session* — an offset correct at the warm-up bar is stale bars later. The
-design answer is drift re-centring: after calibration, the server watches a sliding window
-of recent deltas; when the windowed median walks away from zero while dispersion stays
-tight — the signature of a drifting clock, not a changing performance — the offset is
-nudged toward the median under the same guards. The anti-spoof gate (§6) is computed on
-values invariant to this correction, so drift tracking never weakens it.
+*drifts during a session* — an offset correct at the warm-up bar is stale bars later. Two
+answers, one shipped and one designed. Shipped: the acceptance window was retuned from the
+logged deltas (±90 → ±120 ms, §7), sized so the typical drift observed in the field stays
+inside it for a player tapping with what they hear. Designed — next in the kernel's build
+order, **not yet in production** — is drift re-centring: after calibration, the server
+watches a sliding window of recent deltas; when the windowed median walks away from zero
+while dispersion stays tight — the signature of a drifting clock, not a changing
+performance — the offset is nudged toward the median under the same guards as adaptive
+calibration (§4). The anti-spoof gate (§6) is computed on values invariant to any such
+correction, so drift re-centring cannot weaken it when it ships.
 
 ## 6. Anti-spoof that calibration cannot blind
 
@@ -158,6 +164,10 @@ data; the values are the working set, not claimed optima.
 Patent Applications No. 64/089,862 (filed June 13, 2026) and No. 64/134,723 (filed
 August 15, 2026). No license, express or implied, is granted by this publication —
 see the [terms](https://onedrum.io/terms).
+
+**Revisions.** v1.0.1 (17 Oct 2026): §5 corrected to state plainly that drift
+re-centring is a designed mechanism, not yet in production; the shipped mitigation for
+observed drift is the field-tuned ±120 ms window. v1.0 (16 Aug 2026): initial publication.
 
 *OneDrum is the engine and the API; Viking Row is the first experience built on it.
 Questions from operators are welcome.*
